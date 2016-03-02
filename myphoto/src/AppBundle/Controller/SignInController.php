@@ -19,7 +19,8 @@ class SignInController extends Controller{
 
     public function authentificationAction(Request $request) {
     	$user = new User();
-        $form = $this->createForm(UserType2::class, $user);
+        $userType2 = new UserType2();
+        $form = $this->createForm($userType2, $user);
 
         // handle the submit (will only happen on POST)
         $form->handleRequest($request);

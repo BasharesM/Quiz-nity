@@ -20,7 +20,8 @@ class SignUpController extends Controller{
   public function registerAction(Request $request){
         // build the form
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $userType = new UserType();
+        $form = $this->createForm($userType, $user);
 
         // handle the submit (will only happen on POST)
         $form->handleRequest($request);

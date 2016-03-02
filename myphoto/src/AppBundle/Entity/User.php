@@ -30,18 +30,35 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(type="string", length=64)
+     * @return string
      */
     private $password;
 
 
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $plainPassword;
+    
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+    
+
+    public function __construct()
+    {
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid(null, true));
+    }
+    
     /**
      * Get id
      *
@@ -67,44 +84,9 @@ class User implements UserInterface, \Serializable
 
     /**
      * Get username
-     *
+     * 
      * @return string
-     * @ORM\Column(type="string", length=64)
      */
-    private $password;
-
-
-    /**
-     * @ORM\Column(type="string", length=64)
-     */
-    private $plainPassword;
-    /**
-     * @ORM\Column(type="string", length=60, unique=true)
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    private $isActive;
-
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
     public function getUsername()
     {
         return $this->username;
@@ -157,39 +139,49 @@ class User implements UserInterface, \Serializable
         return $this->password;
     }
 
+    /**
+     * Get salt
+     * 
+     * @return null
+     */
     public function getSalt()
     {
         // you *may* need a real salt depending on your encoder
         // see section on salt below
         return null;
     }
-     public function getPlainPassword()
+    
+    /**
+     * Get plain password
+     * 
+     * @return string
+     */
+    public function getPlainPassword()
     {
         return $this->plainPassword;
     }
 
+    /**
+     * Set plain password
+     * 
+     * @param string $password
+     */
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
     }
-    public function getPassword()
-    {
-        return $this->password;
-    }
-     public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
+    
+    /**
+     * Get roles
+     * 
+     * @return array
+     */
     public function getRoles()
     {
         return array('ROLE_USER');
     }
 
+    
     public function eraseCredentials()
     {
     }
