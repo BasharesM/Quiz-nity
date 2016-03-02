@@ -12,13 +12,15 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UserType extends AbstractType{
-	 public function buildForm(FormBuilderInterface $builder, array $options){
-        	$builder
-           ->add('email', EmailType::class)
-           ->add('username', TextType::class)
+    
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {        
+        $builder
+            ->add('email', new EmailType())
+            ->add('username', new TextType())
            //->add('password',  PasswordType::class);
-           ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
+           ->add('plainPassword', new RepeatedType(), array(
+                'type' => new PasswordType(),
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             )

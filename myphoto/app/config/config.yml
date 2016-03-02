@@ -34,6 +34,11 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    
+easy_admin:
+    entities:
+        - AppBundle\Entity\User
+        - AppBundle\Entity\Quiz
 
 # Doctrine Configuration
 doctrine:
