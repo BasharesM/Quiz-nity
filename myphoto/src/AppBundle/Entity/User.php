@@ -51,6 +51,10 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
     
+    /**
+     * @ORM\Column(name="isRole", type="string", columnDefinition="enum('ROLE_USER', 'ROLE_ADMIN')")
+     */
+    private $isRole;
 
     public function __construct()
     {
@@ -59,6 +63,20 @@ class User implements UserInterface, \Serializable
         // $this->salt = md5(uniqid(null, true));
     }
     
+    /**
+     * Set isRole
+     *
+     * @param string $username
+     * @return User
+     */
+
+    public function setIsRole($isRole)
+    {
+        $this->isRole = $isRole;
+
+        return $this;
+    }
+
     /**
      * Get id
      *
@@ -137,6 +155,16 @@ class User implements UserInterface, \Serializable
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Get isRole
+     *
+     * @return string 
+     */
+    public function getIsRole()
+    {
+        return $this->isRole;
     }
 
     /**
