@@ -7,14 +7,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class QuizToChooseController extends Controller {
+class QuizController extends Controller {
 
     /**
-     * @Route("/quiz-to-choose", name="quiz-to-choose")
+     * @Route("/quiz/{id}", name="quiz")
      */
-    public function quizToChooseAction(Request $request) {
-        $content = $this->render('AppBundle:default:quizToChoose.html.twig', array(
-            'quizs' => $this->getDoctrine()->getRepository('AppBundle:Quiz')->findAll()
+    public function quizToChooseAction(Request $request, $id) {
+        $content = $this->render('AppBundle:default:quiz.html.twig', array(
+            'questions' => $this->getDoctrine()->getRepository('AppBundle:Question')->get5QuestionsOfAQuiz($id)
                 )
         );
 

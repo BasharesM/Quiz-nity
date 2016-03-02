@@ -1,7 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block title %}{{ parent() }} | All QuiZ {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/quizs.css') }}" />
+{% endblock %}
+
 {% block body %}
-
-
+    <div class="container">
+        {% for quiz in quizs %}
+            <div class="col-lg-6">
+                <div class="quiz-bloc">
+                    <div class="title"><a href="{{ path('quiz', {'id': quiz.id}) }}">{{ quiz.nom }}</a></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
