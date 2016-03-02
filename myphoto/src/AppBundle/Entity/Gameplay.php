@@ -42,7 +42,6 @@ class Gameplay
      */
     private $score;
 
-
     /**
      * Get id
      *
@@ -62,7 +61,6 @@ class Gameplay
     public function setBeginAt($beginAt)
     {
         $this->beginAt = $beginAt;
-
         return $this;
     }
 
@@ -85,7 +83,6 @@ class Gameplay
     public function setEndAt($endAt)
     {
         $this->endAt = $endAt;
-
         return $this;
     }
 
@@ -108,7 +105,6 @@ class Gameplay
     public function setScore($score)
     {
         $this->score = $score;
-
         return $this;
     }
 

@@ -70,7 +70,6 @@ class Question
      */
     private $quizzId;
 
-
     /**
      * Get id
      *
@@ -90,7 +89,6 @@ class Question
     public function setQuestion($question)
     {
         $this->question = $question;
-
         return $this;
     }
 
@@ -113,7 +111,6 @@ class Question
     public function setAnswer1($answer1)
     {
         $this->answer1 = $answer1;
-
         return $this;
     }
 
@@ -136,7 +133,6 @@ class Question
     public function setAnswer2($answer2)
     {
         $this->answer2 = $answer2;
-
         return $this;
     }
 
@@ -159,7 +155,6 @@ class Question
     public function setAnswer3($answer3)
     {
         $this->answer3 = $answer3;
-
         return $this;
     }
 
@@ -182,7 +177,6 @@ class Question
     public function setAnswer4($answer4)
     {
         $this->answer4 = $answer4;
-
         return $this;
     }
 
@@ -205,7 +199,6 @@ class Question
     public function setGoodAnswer($goodAnswer)
     {
         $this->goodAnswer = $goodAnswer;
-
         return $this;
     }
 
@@ -228,7 +221,6 @@ class Question
     public function setQuizzId($quizzId)
     {
         $this->quizzId = $quizzId;
-
         return $this;
     }
 

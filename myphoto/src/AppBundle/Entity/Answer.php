@@ -28,7 +28,6 @@ class Answer
      */
     private $isGood;
 
-
     /**
      * Get id
      *
@@ -48,7 +47,6 @@ class Answer
     public function setIsGood($isGood)
     {
         $this->isGood = $isGood;
-
         return $this;
     }
 

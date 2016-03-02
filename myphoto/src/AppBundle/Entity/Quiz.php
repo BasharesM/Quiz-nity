@@ -28,7 +28,6 @@ class Quiz
      */
     private $nom;
 
-
     /**
      * Get id
      *
@@ -48,7 +47,6 @@ class Quiz
     public function setNom($nom)
     {
         $this->nom = $nom;
-
         return $this;
     }
 
