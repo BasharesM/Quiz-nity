@@ -30,7 +30,6 @@ class SignUpController extends Controller{
             //  Encode the password (you could also do this via Doctrine listener)
             $password = $this->get('security.password_encoder')
                 			 ->encodePassword($user, $user->getPlainPassword());
-             				//->encodePassword($user, $user->getPassword());
 
             $user->setPassword($password);
 
@@ -43,7 +42,8 @@ class SignUpController extends Controller{
             // ... do any other work - like send them an email, etc
             // maybe set a "flash" success message for the user
 
-            //return $this->redirectToRoute('replace_with_some_route'); --> Page start the Quiz
+            $this->addFlash('info', ' Register successfully.');
+            return $this->redirectToRoute('quiz-to-choose'); 
         }
 
         $content = $this->render('AppBundle:default:signUp.html.twig',array('form' => $form->createView()));

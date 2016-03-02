@@ -35,6 +35,8 @@ class SignInController extends Controller{
           
             //$em->persist($user);
             //$em->flush();
+
+             return $this->redirectToRoute('quiz-to-choose'); 
    		}
 
         $content = $this->render('AppBundle:default:signIn.html.twig',array('form' => $form->createView()));
