@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+	public function findUser($username, $plainPassword)
+	{
+		$users = $this->findBy(array('username' => $username, 'plainPassword' => $plainPassword));
+		return $users;
+	
+	}
+
 }
