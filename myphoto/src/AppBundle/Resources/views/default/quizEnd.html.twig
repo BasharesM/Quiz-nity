@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ parent() }} | End QuiZ {% endblock %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('css/quizs.css') }}" />
+    {% endblock %}
+
+    {% block body %}
+
+    <div class="col-lg-6">
+                <div class="quiz-bloc">
+                    <div class="title"><a href="{{ path('quiz-to-choose') }}">Choisir un autre quiz</a></div>
+                </div>
+                <div class="quiz-bloc">
+                    <div class="title"><a href="">Rejouer le quiz</a></div>
+                </div>
+                 <div class="quiz-bloc">
+                    <div class="title"><a href="{{ path('sign-in') }}">Quitter la partie</a></div>
+                </div>
+                 <div class="quiz-bloc">
+                    <div class="title"><a href="">Consulter mes scores</a></div>
+                </div>
+                <div class="quiz-bloc">
+                    <div class="title"><a href="">Consulter les classements</a></div>
+                </div>
+            </div>
+{% endblock %}
