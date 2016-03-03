@@ -13,8 +13,10 @@ class QuizController extends Controller {
      * @Route("/quiz/{id}", name="quiz")
      */
     public function quizToChooseAction(Request $request, $id) {
+        //$quiz = $this->getDoctrine()->getRepository('AppBundle:Quiz')->findOneById($id);
+        
         $content = $this->render('AppBundle:default:quiz.html.twig', array(
-            'questions' => $this->getDoctrine()->getRepository('AppBundle:Question')->get5QuestionsOfAQuiz($id)
+            'questions' => $this->getDoctrine()->getRepository('AppBundle:Question')->find5RandomQuestionsByQuiz($id)
                 )
         );
 

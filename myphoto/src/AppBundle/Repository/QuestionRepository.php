@@ -33,9 +33,10 @@ class QuestionRepository extends EntityRepository
         return FALSE;
     }
 
-    public function get5QuestionsOfAQuiz($quizzId)
+    public function find5RandomQuestionsByQuiz($quiz_id)
     {
-        $allQuestionsOfAQuiz = $this->findBy(array('quizzId' => $quizzId));
+        $allQuestionsOfAQuiz = $this->findByQuiz($quiz_id);
+        
         if (count($allQuestionsOfAQuiz) > 9)
         {
             # Case we have enough question # must have 10+
@@ -56,7 +57,7 @@ class QuestionRepository extends EntityRepository
         else
         {
             # Case where we don't have enough question # must have 10+
-            die("Error in database : Questions");
+            die("Not enough questions to show");
         }
     }
 
