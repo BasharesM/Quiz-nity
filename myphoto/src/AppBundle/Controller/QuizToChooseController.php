@@ -9,11 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 class QuizToChooseController extends Controller {
 
     /**
-     * @Route("/quiz-to-choose", name="quiz-to-choose")
+     * @Route("/quiz/quiz-to-choose", name="quiz-to-choose")
      */
     public function quizToChooseAction(Request $request) {
-        $query = $this->getDoctrine()->getRepository('AppBundle:Quiz')->findQueryForAll();
 
+        $query = $this->getDoctrine()->getRepository('AppBundle:Quiz')->findQueryForAll();
+        
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, /* query NOT result */

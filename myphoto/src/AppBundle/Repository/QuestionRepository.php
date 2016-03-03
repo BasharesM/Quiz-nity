@@ -56,8 +56,6 @@ class QuestionRepository extends EntityRepository
         }
         else
         {
-            # Case where we don't have enough question # must have 10+
-            die("Not enough questions to show");
         }
     }
 

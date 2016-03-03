@@ -4,9 +4,7 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
-        our_db_provider:
+        orm:
             entity:
                 class: AppBundle:User
                 property: username
@@ -19,28 +17,23 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        
+
         secured_area:
-            pattern:    ^/user/
+            anonymous: ~
+            pattern:    ^/
             form_login:
-                login_path: /user/login
-                check_path: /user/login_check
+                login_path: sign-in
+                check_path: sign-in
+                default_target_path: quiz-to-choose
             logout:
                 path:   /logout
                 target: /user
-                
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
     encoders:
         AppBundle\Entity\User: bcrypt
 
     access_control:
+        - { path: ^/sign-in, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/quiz, roles: ROLE_USER }
         - { path: ^/admin, roles: ROLE_ADMIN }
+

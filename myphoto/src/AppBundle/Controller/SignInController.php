@@ -13,40 +13,36 @@ use AppBundle\Form\UserType2;
 use AppBundle\Repository\UserRepository;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\QueryBuilder;
 
-
-//use 
 
 class SignInController extends Controller{
-  
-
     /**
      * @Route("/sign-in", name="sign-in")
      */
-
     public function authentificationAction(Request $request) {
-    	  $user = new User();
-        $userType2 = new UserType2();
-        $form = $this->createForm($userType2, $user);
+        $authenticationUtils = $this->get('security.authentication_utils');
 
-        // handle the submit (will only happen on POST)
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
 
-          $repository = $this->getDoctrine()->getRepository('AppBundle:User');
-          
-          $username = $user->getUsername();
-          $password = $user->getPlainPassword();
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+        // dump($lastUsername);
+        // dump($error);
+        // exit;
 
-          if($repository->findUser($username,$password) != null){
-             return $this->redirectToRoute('quiz-to-choose'); 
-          }
-          
-            
-   		}
-
-        $content = $this->render('AppBundle:default:signIn.html.twig',array('form' => $form->createView()));
-        return new Response($content);
-     
+        return $this->render('AppBundle:default:signIn.html.twig', ['error' => $error]);
     }
+
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function userLogoutAction(Request $request) {
+        
+      
+    }
+
+
 }

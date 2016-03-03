@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FinalQuizController extends Controller {
 
     /**
-     * @Route("/quiz-end", name="quiz-end")
+     * @Route("/quiz/quiz-end", name="quiz-end")
      */
     public function quizEndAction(Request $request) {
         $url = "url";
