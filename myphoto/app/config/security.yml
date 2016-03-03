@@ -26,8 +26,8 @@ security:
                 check_path: sign-in
                 default_target_path: quiz-to-choose
             logout:
-                path:   /logout
-                target: /user
+                path:   logout
+                target: sign-in
 
     encoders:
         AppBundle\Entity\User: bcrypt

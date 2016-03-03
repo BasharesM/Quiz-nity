@@ -22,6 +22,6 @@ class LogoutController extends Controller{
      */
     public function logoutAction(Request $request) {
 
-        return $this->render('AppBundle:default:logout.html.twig');
+        return $this->render('AppBundle:default:signIn.html.twig');
     }
 }
