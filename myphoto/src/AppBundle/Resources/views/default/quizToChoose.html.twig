@@ -7,20 +7,15 @@
 {% endblock %}
 
 {% block body %}
-
-    {# total items count #}
-    <div class="count">
-        {{ pagination.getTotalItemCount }}
-    </div>
-
-    <table>
-        {# table body #}
+    <div class="container">
         {% for quiz in pagination %}
-        <tr {% if loop.index is odd %}class="color"{% endif %}>
-            <td>ID {{ quiz.id }}</td>
-        </tr>
+            <div class="col-lg-6">
+                <div class="quiz-bloc">
+                    <div class="title"><a href="{{ path('quiz', {'id': quiz.id}) }}">{{ quiz.nom }}</a></div>
+                </div>
+            </div>
         {% endfor %}
-    </table>
+    </div>
 
     {# display navigation #}
     <div class="navigation">
