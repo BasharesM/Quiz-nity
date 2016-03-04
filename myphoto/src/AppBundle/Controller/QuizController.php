@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class QuizController extends Controller {
 
     /**
-     * @Route("/quiz/{id}", name="quiz")
+     * @Route("/quiz/chosen-quiz/{id}", name="quiz")
      */
     public function quizToChooseAction(Request $request, $id) {
         //$quiz = $this->getDoctrine()->getRepository('AppBundle:Quiz')->findOneById($id);
