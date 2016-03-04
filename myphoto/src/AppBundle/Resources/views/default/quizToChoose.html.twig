@@ -8,6 +8,10 @@
 
 {% block body %}
     <div class="container">
+        <div class="col-lg-12" style="text-align: center; margin-top: 50px;">
+            <a href="{{ path('search-quiz') }}" class="btn btn-danger">Rechercher un quiz</a>
+        </div>
+        
         {% for quiz in pagination %}
             <div class="col-lg-6">
                 <div class="quiz-bloc">

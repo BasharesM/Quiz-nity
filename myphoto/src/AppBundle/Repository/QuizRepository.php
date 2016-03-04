@@ -20,4 +20,23 @@ class QuizRepository extends EntityRepository {
         return $query;
     }
 
+    private function isAWordInASentence($sentence, $word) {
+        if (strripos($sentence, $word) !== false) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function getQuizBySegment($segment) {
+        $allQuizz = $this->findAll();
+
+        $selectedQuiz = [];
+        foreach ($allQuizz as $quiz) {
+            if ($this->isAWordInASentence($quiz->getNom(), $segment) === TRUE)
+                $selectedQuiz[] = $quiz;
+        }
+        return $selectedQuiz;
+    }
+
 }

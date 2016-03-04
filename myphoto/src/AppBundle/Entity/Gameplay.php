@@ -32,25 +32,32 @@ class Gameplay
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endAt", type="datetime")
+     * @ORM\Column(name="endAt", type="datetime", nullable=true)
      */
     private $endAt;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="timeOfTheGame", type="integer", nullable=true)
+     */
+    private $timeOfTheGame;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="score", type="integer")
+     * @ORM\Column(name="score", type="integer", nullable=true)
      */
     private $score;
     
     /**
-    * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="gameplay")
+    * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="gameplay", cascade={"persist"}, fetch="EAGER")
     * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
     */
     private $quiz;
     
     /**
-    * @ORM\ManyToOne(targetEntity="User", inversedBy="gameplay")
+    * @ORM\ManyToOne(targetEntity="User", inversedBy="gameplay", cascade={"persist"}, fetch="EAGER")
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
     private $user;
@@ -218,5 +225,28 @@ class Gameplay
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Set timeOfTheGame
+     *
+     * @param integer $timeOfTheGame
+     * @return Gameplay
+     */
+    public function setTimeOfTheGame($timeOfTheGame)
+    {
+        $this->timeOfTheGame = $timeOfTheGame;
+
+        return $this;
+    }
+
+    /**
+     * Get timeOfTheGame
+     *
+     * @return integer 
+     */
+    public function getTimeOfTheGame()
+    {
+        return $this->timeOfTheGame;
     }
 }

@@ -100,4 +100,50 @@ class Answer
     {
         return $this->user;
     }
+
+    /**
+     * Set question
+     *
+     * @param \AppBundle\Entity\Question $question
+     * @return Answer
+     */
+    public function setQuestion(\AppBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \AppBundle\Entity\Question 
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set gameplay
+     *
+     * @param \AppBundle\Entity\Gameplay $gameplay
+     * @return Answer
+     */
+    public function setGameplay(\AppBundle\Entity\Gameplay $gameplay = null)
+    {
+        $this->gameplay = $gameplay;
+
+        return $this;
+    }
+
+    /**
+     * Get gameplay
+     *
+     * @return \AppBundle\Entity\Gameplay 
+     */
+    public function getGameplay()
+    {
+        return $this->gameplay;
+    }
 }

@@ -8,49 +8,52 @@
 
 {% block body %}
     <div class="container">
-        {% for question in questions %}
-            <div class="col-lg-12">
-                <div class="quiz-bloc">
-                    <div class="quiz-question">{{ loop.index }}. {{ question.question }}</div>
+        <form action="{{ path('quiz-end') }}" method="POST">
+            {% for question in questions %}
+                <div class="col-lg-12">
+                    <div class="quiz-bloc">
+                        <div class="quiz-question">{{ loop.index }}. {{ question.question }}</div>
 
-                    <div class="answers-bloc">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="" value="{{ question.answer1 }}">
-                                {{ question.answer1 }}
-                            </label>
+                        <div class="answers-bloc">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.answer1 }}">
+                                    {{ question.answer1 }}
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="answers-bloc">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="" value="{{ question.answer2 }}">
-                                {{ question.answer2 }}
-                            </label>
+                        <hr />
+                        <div class="answers-bloc">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.answer2 }}">
+                                    {{ question.answer2 }}
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="answers-bloc">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="" value="{{ question.answer3 }}">
-                                {{ question.answer3 }}
-                            </label>
+                        <hr />
+                        <div class="answers-bloc">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.answer3 }}">
+                                    {{ question.answer3 }}
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="answers-bloc">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="" value="{{ question.answer4 }}">
-                                {{ question.answer4 }}
-                            </label>
+                        <hr />
+                        <div class="answers-bloc">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="{{ question.id }}" value="{{ question.answer4 }}">
+                                    {{ question.answer4 }}
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-        <a href={{ path('quiz-end') }} class="col-lg-offset-5 btn btn-lg btn-danger">Valider !</a>
+            {% endfor %}
+            <input type="hidden" name="gameplayId" value="{{ gameplayId }}" />
+            <input type="submit" class="col-lg-offset-5 btn btn-lg btn-danger" value="Valider !">
+        </form>
     </div>
 {% endblock %}

@@ -35,7 +35,7 @@ class Quiz
     private $questions;
     
     /**
-    * @ORM\OneToMany(targetEntity="Gameplay", mappedBy="quiz")
+    * @ORM\OneToMany(targetEntity="Gameplay", mappedBy="quiz", cascade={"persist"}, fetch="EAGER")
     */
     private $gameplay;
     

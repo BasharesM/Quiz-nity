@@ -12,6 +12,7 @@ class QuizToChooseController extends Controller {
      * @Route("/quiz/quiz-to-choose", name="quiz-to-choose")
      */
     public function quizToChooseAction(Request $request) {
+        $games = $this->getDoctrine()->getRepository('AppBundle:Gameplay')->getThreeBestGames(1);
 
         $query = $this->getDoctrine()->getRepository('AppBundle:Quiz')->findQueryForAll();
         
@@ -23,7 +24,7 @@ class QuizToChooseController extends Controller {
         );
 
         // parameters to template
-        return $this->render('AppBundle:default:quizToChoose.html.twig', array('pagination' => $pagination));
+        return $this->render('AppBundle:default:quizToChoose.html.twig', array('pagination' => $pagination, 'game' => $games));
     }
 
 }

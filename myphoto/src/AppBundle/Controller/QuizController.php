@@ -14,9 +14,12 @@ class QuizController extends Controller {
      */
     public function quizToChooseAction(Request $request, $id) {
         //$quiz = $this->getDoctrine()->getRepository('AppBundle:Quiz')->findOneById($id);
-        
+
+        $gameplayeId = $this->getDoctrine()->getRepository('AppBundle:Gameplay')->startGame($id, $this->getUser()->getId());
+
         $content = $this->render('AppBundle:default:quiz.html.twig', array(
-            'questions' => $this->getDoctrine()->getRepository('AppBundle:Question')->find5RandomQuestionsByQuiz($id)
+            'questions' => $this->getDoctrine()->getRepository('AppBundle:Question')->find5RandomQuestionsByQuiz($id),
+            'gameplayId' => $gameplayeId
                 )
         );
 
