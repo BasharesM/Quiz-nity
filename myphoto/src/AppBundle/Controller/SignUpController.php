@@ -32,6 +32,7 @@ class SignUpController extends Controller{
                 			 ->encodePassword($user, $user->getPlainPassword());
 
             $user->setPassword($password);
+            $user->setPlainPassword('');
 
             // save the User in user table
 
@@ -49,4 +50,19 @@ class SignUpController extends Controller{
         $content = $this->render('AppBundle:default:signUp.html.twig',array('form' => $form->createView()));
         return new Response($content);
     }
+
+
+    // for sending email 
+    public function indexAction($name){
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Hello Email')
+            ->setFrom('send@example.com')
+            ->setTo('recipient@example.com')
+            ->setBody(
+                $this->renderView('AppBundle:default:email.html.twig',array('name' => $name)),'text/html');
+        $this->get('mailer')->send($message);
+
+       //return $this->render(...);
+    }
+ 
 }

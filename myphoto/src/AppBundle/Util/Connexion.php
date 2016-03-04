@@ -1,29 +1,18 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Util;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
-use AppBundle\Entity\Post;
 use AppBundle\Entity\User;
-use AppBundle\Form\UserType2;
-use AppBundle\Repository\UserRepository;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\QueryBuilder;
-
-
-class SignInController extends Controller{
-    /**
-     * @Route("/sign-in", name="sign-in")
-     */
-    public function authentificationAction(Request $request) {
+class Connexion{
+	public function ConnexionAction(){
         $user = new User();
         $authenticationUtils = $this->get('security.authentication_utils');
-
+ 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
@@ -32,15 +21,5 @@ class SignInController extends Controller{
         
         return $this->render('AppBundle:default:signIn.html.twig', ['error' => $error]);
     }
-
-
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function userLogoutAction(Request $request) {
-        
-      
-    }
-
-
 }
+    
